@@ -1,0 +1,30 @@
+DS18X20 1-Wire-Reader Demo by Martin Thomas
+-------------------------------------------
+Scanning Bus for DS18X20
+1 DS18X20 Sensor(s) available:
+# in Bus :1 : FC:28 (18B)SN: 44 D7 6B 00 00 00 CRC:BC  CRC O.K. 
+Sensor# 1 is a DS18B20 which is externally powered
+
+DS18x20 EEPROM support test for fist sensor
+TH/TL from EEPROM sensor 1 : 140 / 141
+TH+1 and TL+1 written to scratchpad
+scratchpad copied to DS18x20 EEPROM
+DS18x20 EEPROM copied back to scratchpad
+TH and TL verified
+TH/TL from EEPROM sensor 1 now : 141 / 142
+
+There is only one sensor -> Demo of "read_meas_single":
++21.8125°C [+21.8°C]
+
+Convert_T and Read Sensor by Sensor (reverse order)
+Sensor# 1 = +21.8125°C [+21.8°C]
+
+Convert_T for all Sensors and Read Sensor by Sensor
+Sensor# 1 = +21.8125°C [+21.8°C]
+
+Verbose output
+FC:28 (18B)SN: 44 D7 6B 00 00 00 CRC:BC  CRC O.K. 
+SP:5D 01 8D 8E 7F FF 03 10 CRC:BD  CRC O.K. 
+ T_raw=015D B20/12 +21.8125°C
+
+

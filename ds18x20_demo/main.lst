@@ -1,0 +1,1261 @@
+   1               		.file	"main.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.global __do_copy_data
+   8               		.global __do_clear_bss
+  16               	.Ltext0:
+  17               	.global	uart_put_temp
+  19               	uart_put_temp:
+  20               	.LFB5:
+  21               	.LM1:
+  22               	.LVL0:
+  23 0000 DF92      		push r13
+  24 0002 EF92      		push r14
+  25 0004 FF92      		push r15
+  26 0006 0F93      		push r16
+  27 0008 1F93      		push r17
+  28 000a DF93      		push r29
+  29 000c CF93      		push r28
+  30 000e CDB7      		in r28,__SP_L__
+  31 0010 DEB7      		in r29,__SP_H__
+  32 0012 6197      		sbiw r28,17
+  33 0014 0FB6      		in __tmp_reg__,__SREG__
+  34 0016 F894      		cli
+  35 0018 DEBF      		out __SP_H__,r29
+  36 001a 0FBE      		out __SREG__,__tmp_reg__
+  37 001c CDBF      		out __SP_L__,r28
+  38               	/* prologue: function */
+  39               	/* frame size = 17 */
+  40 001e 182F      		mov r17,r24
+  41 0020 D62E      		mov r13,r22
+  42 0022 042F      		mov r16,r20
+  43               	.LM2:
+  44 0024 8823      		tst r24
+  45 0026 01F4      		brne .L2
+  46               	.LVL1:
+  47 0028 8BE2      		ldi r24,lo8(43)
+  48               	.LVL2:
+  49 002a 00C0      		rjmp .L3
+  50               	.LVL3:
+  51               	.L2:
+  52 002c 8DE2      		ldi r24,lo8(45)
+  53               	.LVL4:
+  54               	.L3:
+  55 002e 00D0      		rcall uart_putc
+  56               	.LM3:
+  57 0030 8D2D      		mov r24,r13
+  58 0032 90E0      		ldi r25,lo8(0)
+  59 0034 00D0      		rcall uart_puti
+  60               	.LM4:
+  61 0036 80E0      		ldi r24,lo8(c.1667)
+  62 0038 90E0      		ldi r25,hi8(c.1667)
+  63 003a 00D0      		rcall uart_puts_p
+  64               	.LM5:
+  65 003c 202F      		mov r18,r16
+  66 003e 30E0      		ldi r19,lo8(0)
+  67               	.LVL5:
+  68 0040 81E7      		ldi r24,lo8(625)
+  69 0042 92E0      		ldi r25,hi8(625)
+  70 0044 AC01      		movw r20,r24
+  71 0046 249F      		mul r18,r20
+  72 0048 C001      		movw r24,r0
+  73 004a 259F      		mul r18,r21
+  74 004c 900D      		add r25,r0
+  75 004e 349F      		mul r19,r20
+  76 0050 900D      		add r25,r0
+  77 0052 1124      		clr r1
+  78 0054 7E01      		movw r14,r28
+  79 0056 0894      		sec
+  80 0058 E11C      		adc r14,__zero_reg__
+  81 005a F11C      		adc r15,__zero_reg__
+  82 005c B701      		movw r22,r14
+  83 005e 4AE0      		ldi r20,lo8(10)
+  84 0060 50E0      		ldi r21,hi8(10)
+  85 0062 00D0      		rcall itoa
+  86               	.LVL6:
+  87               	.LM6:
+  88 0064 F701      		movw r30,r14
+  89 0066 0190      		ld __tmp_reg__,Z+
+  90 0068 0020      		tst __tmp_reg__
+  91 006a 01F4      		brne .-6
+  92 006c EE1A      		sub r14,r30
+  93               	.LVL7:
+  94 006e 55E0      		ldi r21,lo8(5)
+  95 0070 E50E      		add r14,r21
+  96 0072 FF24      		clr r15
+  97               	.LVL8:
+  98               	.LM7:
+  99 0074 00C0      		rjmp .L4
+ 100               	.L5:
+ 101 0076 80E0      		ldi r24,lo8(c.1669)
+ 102 0078 90E0      		ldi r25,hi8(c.1669)
+ 103 007a 00D0      		rcall uart_puts_p
+ 104 007c F394      		inc r15
+ 105               	.L4:
+ 106 007e FE14      		cp r15,r14
+ 107 0080 00F0      		brlo .L5
+ 108               	.LM8:
+ 109 0082 CE01      		movw r24,r28
+ 110 0084 0196      		adiw r24,1
+ 111 0086 00D0      		rcall uart_puts
+ 112               	.LM9:
+ 113 0088 80E0      		ldi r24,lo8(c.1674)
+ 114 008a 90E0      		ldi r25,hi8(c.1674)
+ 115 008c 00D0      		rcall uart_puts_p
+ 116               	.LM10:
+ 117 008e 1123      		tst r17
+ 118 0090 01F4      		brne .L6
+ 119 0092 8BE2      		ldi r24,lo8(43)
+ 120 0094 00C0      		rjmp .L7
+ 121               	.L6:
+ 122 0096 8DE2      		ldi r24,lo8(45)
+ 123               	.L7:
+ 124 0098 00D0      		rcall uart_putc
+ 125               	.LM11:
+ 126 009a 812F      		mov r24,r17
+ 127 009c 6D2D      		mov r22,r13
+ 128 009e 402F      		mov r20,r16
+ 129 00a0 00D0      		rcall DS18X20_temp_to_decicel
+ 130 00a2 8C01      		movw r16,r24
+ 131               	.LVL9:
+ 132               	.LM12:
+ 133 00a4 6AE0      		ldi r22,lo8(10)
+ 134 00a6 70E0      		ldi r23,hi8(10)
+ 135 00a8 00D0      		rcall __udivmodhi4
+ 136 00aa CB01      		movw r24,r22
+ 137 00ac 00D0      		rcall uart_puti
+ 138               	.LM13:
+ 139 00ae 80E0      		ldi r24,lo8(c.1676)
+ 140 00b0 90E0      		ldi r25,hi8(c.1676)
+ 141 00b2 00D0      		rcall uart_puts_p
+ 142               	.LM14:
+ 143 00b4 C801      		movw r24,r16
+ 144 00b6 6AE0      		ldi r22,lo8(10)
+ 145 00b8 70E0      		ldi r23,hi8(10)
+ 146 00ba 00D0      		rcall __udivmodhi4
+ 147 00bc 805D      		subi r24,lo8(-(48))
+ 148 00be 00D0      		rcall uart_putc
+ 149               	.LM15:
+ 150 00c0 80E0      		ldi r24,lo8(c.1678)
+ 151 00c2 90E0      		ldi r25,hi8(c.1678)
+ 152 00c4 00D0      		rcall uart_puts_p
+ 153               	/* epilogue start */
+ 154               	.LM16:
+ 155 00c6 6196      		adiw r28,17
+ 156 00c8 0FB6      		in __tmp_reg__,__SREG__
+ 157 00ca F894      		cli
+ 158 00cc DEBF      		out __SP_H__,r29
+ 159 00ce 0FBE      		out __SREG__,__tmp_reg__
+ 160 00d0 CDBF      		out __SP_L__,r28
+ 161 00d2 CF91      		pop r28
+ 162 00d4 DF91      		pop r29
+ 163 00d6 1F91      		pop r17
+ 164               	.LVL10:
+ 165 00d8 0F91      		pop r16
+ 166               	.LVL11:
+ 167 00da FF90      		pop r15
+ 168               	.LVL12:
+ 169 00dc EF90      		pop r14
+ 170               	.LVL13:
+ 171 00de DF90      		pop r13
+ 172               	.LVL14:
+ 173 00e0 0895      		ret
+ 174               	.LFE5:
+ 176               	.global	search_sensors
+ 178               	search_sensors:
+ 179               	.LFB4:
+ 180               	.LM17:
+ 181 00e2 8F92      		push r8
+ 182 00e4 9F92      		push r9
+ 183 00e6 AF92      		push r10
+ 184 00e8 BF92      		push r11
+ 185 00ea DF92      		push r13
+ 186 00ec EF92      		push r14
+ 187 00ee FF92      		push r15
+ 188 00f0 0F93      		push r16
+ 189 00f2 1F93      		push r17
+ 190 00f4 DF93      		push r29
+ 191 00f6 CF93      		push r28
+ 192 00f8 CDB7      		in r28,__SP_L__
+ 193 00fa DEB7      		in r29,__SP_H__
+ 194 00fc 2997      		sbiw r28,9
+ 195 00fe 0FB6      		in __tmp_reg__,__SREG__
+ 196 0100 F894      		cli
+ 197 0102 DEBF      		out __SP_H__,r29
+ 198 0104 0FBE      		out __SREG__,__tmp_reg__
+ 199 0106 CDBF      		out __SP_L__,r28
+ 200               	/* prologue: function */
+ 201               	/* frame size = 9 */
+ 202               	.LM18:
+ 203 0108 80E0      		ldi r24,lo8(c.1636)
+ 204 010a 90E0      		ldi r25,hi8(c.1636)
+ 205 010c 00D0      		rcall uart_puts_p
+ 206               	.LM19:
+ 207 010e 8FEF      		ldi r24,lo8(-1)
+ 208 0110 8983      		std Y+1,r24
+ 209               	.LVL15:
+ 210 0112 00E0      		ldi r16,lo8(0)
+ 211 0114 10E0      		ldi r17,hi8(0)
+ 212               	.LM20:
+ 213 0116 22E0      		ldi r18,lo8(2)
+ 214 0118 E22E      		mov r14,r18
+ 215 011a F12C      		mov r15,__zero_reg__
+ 216 011c EC0E      		add r14,r28
+ 217 011e FD1E      		adc r15,r29
+ 218 0120 4E01      		movw r8,r28
+ 219 0122 0894      		sec
+ 220 0124 811C      		adc r8,__zero_reg__
+ 221 0126 911C      		adc r9,__zero_reg__
+ 222               	.LM21:
+ 223 0128 9AE0      		ldi r25,lo8(10)
+ 224 012a A92E      		mov r10,r25
+ 225 012c B12C      		mov r11,__zero_reg__
+ 226 012e AC0E      		add r10,r28
+ 227 0130 BD1E      		adc r11,r29
+ 228               	.LM22:
+ 229 0132 00C0      		rjmp .L11
+ 230               	.LVL16:
+ 231               	.L16:
+ 232               	.LM23:
+ 233 0134 C401      		movw r24,r8
+ 234               	.LVL17:
+ 235 0136 B701      		movw r22,r14
+ 236 0138 00D0      		rcall DS18X20_find_sensor
+ 237               	.LM24:
+ 238 013a 8981      		ldd r24,Y+1
+ 239 013c 8F3F      		cpi r24,lo8(-1)
+ 240 013e 01F4      		brne .L12
+ 241               	.LM25:
+ 242 0140 80E0      		ldi r24,lo8(c.1638)
+ 243 0142 90E0      		ldi r25,hi8(c.1638)
+ 244 0144 00C0      		rjmp .L19
+ 245               	.L12:
+ 246               	.LM26:
+ 247 0146 8E3F      		cpi r24,lo8(-2)
+ 248 0148 01F4      		brne .L14
+ 249               	.LM27:
+ 250 014a 80E0      		ldi r24,lo8(c.1641)
+ 251 014c 90E0      		ldi r25,hi8(c.1641)
+ 252               	.L19:
+ 253 014e 00D0      		rcall uart_puts_p
+ 254               	.LM28:
+ 255 0150 00C0      		rjmp .L13
+ 256               	.L14:
+ 257 0152 D701      		movw r26,r14
+ 258 0154 F801      		movw r30,r16
+ 259 0156 83E0      		ldi r24,3
+ 260 0158 EE0F      	1:	lsl r30
+ 261 015a FF1F      		rol r31
+ 262 015c 8A95      		dec r24
+ 263 015e 01F4      		brne 1b
+ 264 0160 E050      		subi r30,lo8(-(gSensorIDs))
+ 265 0162 F040      		sbci r31,hi8(-(gSensorIDs))
+ 266               	.L15:
+ 267               	.LM29:
+ 268 0164 8D91      		ld r24,X+
+ 269 0166 8193      		st Z+,r24
+ 270               	.LM30:
+ 271 0168 AA15      		cp r26,r10
+ 272 016a BB05      		cpc r27,r11
+ 273 016c 01F4      		brne .L15
+ 274 016e 0F5F      		subi r16,lo8(-(1))
+ 275 0170 1F4F      		sbci r17,hi8(-(1))
+ 276               	.L11:
+ 277 0172 D02E      		mov r13,r16
+ 278               	.LM31:
+ 279 0174 8981      		ldd r24,Y+1
+ 280 0176 8823      		tst r24
+ 281 0178 01F0      		breq .L13
+ 282               	.LVL18:
+ 283 017a 0530      		cpi r16,5
+ 284 017c 1105      		cpc r17,__zero_reg__
+ 285 017e 01F4      		brne .L16
+ 286               	.LVL19:
+ 287               	.L13:
+ 288               	.LM32:
+ 289 0180 8D2D      		mov r24,r13
+ 290               	/* epilogue start */
+ 291 0182 2996      		adiw r28,9
+ 292 0184 0FB6      		in __tmp_reg__,__SREG__
+ 293 0186 F894      		cli
+ 294 0188 DEBF      		out __SP_H__,r29
+ 295 018a 0FBE      		out __SREG__,__tmp_reg__
+ 296 018c CDBF      		out __SP_L__,r28
+ 297 018e CF91      		pop r28
+ 298 0190 DF91      		pop r29
+ 299 0192 1F91      		pop r17
+ 300 0194 0F91      		pop r16
+ 301 0196 FF90      		pop r15
+ 302 0198 EF90      		pop r14
+ 303 019a DF90      		pop r13
+ 304               	.LVL20:
+ 305 019c BF90      		pop r11
+ 306 019e AF90      		pop r10
+ 307 01a0 9F90      		pop r9
+ 308 01a2 8F90      		pop r8
+ 309 01a4 0895      		ret
+ 310               	.LFE4:
+ 312               	.global	main
+ 314               	main:
+ 315               	.LFB7:
+ 316               	.LM33:
+ 317 01a6 4F92      		push r4
+ 318 01a8 5F92      		push r5
+ 319 01aa 6F92      		push r6
+ 320 01ac 7F92      		push r7
+ 321 01ae 8F92      		push r8
+ 322 01b0 9F92      		push r9
+ 323 01b2 AF92      		push r10
+ 324 01b4 BF92      		push r11
+ 325 01b6 CF92      		push r12
+ 326 01b8 DF92      		push r13
+ 327 01ba EF92      		push r14
+ 328 01bc FF92      		push r15
+ 329 01be 1F93      		push r17
+ 330 01c0 DF93      		push r29
+ 331 01c2 CF93      		push r28
+ 332 01c4 CDB7      		in r28,__SP_L__
+ 333 01c6 DEB7      		in r29,__SP_H__
+ 334 01c8 2C97      		sbiw r28,12
+ 335 01ca 0FB6      		in __tmp_reg__,__SREG__
+ 336 01cc F894      		cli
+ 337 01ce DEBF      		out __SP_H__,r29
+ 338 01d0 0FBE      		out __SREG__,__tmp_reg__
+ 339 01d2 CDBF      		out __SP_L__,r28
+ 340               	/* prologue: function */
+ 341               	/* frame size = 12 */
+ 342               	.LM34:
+ 343 01d4 87E1      		ldi r24,lo8(23)
+ 344 01d6 90E0      		ldi r25,hi8(23)
+ 345 01d8 00D0      		rcall uart_init
+ 346               	.LM35:
+ 347               	/* #APP */
+ 348               	 ;  168 "main.c" 1
+ 349 01da 7894      		sei
+ 350               	 ;  0 "" 2
+ 351               	.LM36:
+ 352               	/* #NOAPP */
+ 353 01dc 80E0      		ldi r24,lo8(c.1746)
+ 354 01de 90E0      		ldi r25,hi8(c.1746)
+ 355 01e0 00D0      		rcall uart_puts_p
+ 356               	.LM37:
+ 357 01e2 80E0      		ldi r24,lo8(c.1748)
+ 358 01e4 90E0      		ldi r25,hi8(c.1748)
+ 359 01e6 00D0      		rcall uart_puts_p
+ 360               	.LM38:
+ 361 01e8 00D0      		rcall search_sensors
+ 362 01ea 182F      		mov r17,r24
+ 363               	.LVL21:
+ 364               	.LM39:
+ 365 01ec 90E0      		ldi r25,lo8(0)
+ 366 01ee 00D0      		rcall uart_puti
+ 367               	.LM40:
+ 368 01f0 80E0      		ldi r24,lo8(c.1750)
+ 369 01f2 90E0      		ldi r25,hi8(c.1750)
+ 370 01f4 00D0      		rcall uart_puts_p
+ 371 01f6 A0E0      		ldi r26,lo8(gSensorIDs)
+ 372 01f8 CA2E      		mov r12,r26
+ 373 01fa A0E0      		ldi r26,hi8(gSensorIDs)
+ 374 01fc DA2E      		mov r13,r26
+ 375 01fe EE24      		clr r14
+ 376 0200 FF24      		clr r15
+ 377               	.LM41:
+ 378 0202 00C0      		rjmp .L21
+ 379               	.L22:
+ 380               	.LM42:
+ 381 0204 80E0      		ldi r24,lo8(c.1752)
+ 382 0206 90E0      		ldi r25,hi8(c.1752)
+ 383 0208 00D0      		rcall uart_puts_p
+ 384               	.LM43:
+ 385 020a C701      		movw r24,r14
+ 386 020c 00D0      		rcall uart_puti
+ 387               	.LM44:
+ 388 020e 80E0      		ldi r24,lo8(c.1754)
+ 389 0210 90E0      		ldi r25,hi8(c.1754)
+ 390 0212 00D0      		rcall uart_puts_p
+ 391               	.LM45:
+ 392 0214 C601      		movw r24,r12
+ 393 0216 68E0      		ldi r22,lo8(8)
+ 394 0218 70E0      		ldi r23,hi8(8)
+ 395 021a 00D0      		rcall DS18X20_show_id_uart
+ 396               	.LM46:
+ 397 021c 80E0      		ldi r24,lo8(c.1756)
+ 398 021e 90E0      		ldi r25,hi8(c.1756)
+ 399 0220 00D0      		rcall uart_puts_p
+ 400 0222 88E0      		ldi r24,lo8(8)
+ 401 0224 90E0      		ldi r25,hi8(8)
+ 402 0226 C80E      		add r12,r24
+ 403 0228 D91E      		adc r13,r25
+ 404               	.L21:
+ 405 022a 0894      		sec
+ 406 022c E11C      		adc r14,__zero_reg__
+ 407 022e F11C      		adc r15,__zero_reg__
+ 408               	.LM47:
+ 409 0230 8E2D      		mov r24,r14
+ 410 0232 8150      		subi r24,lo8(-(-1))
+ 411 0234 8117      		cp r24,r17
+ 412 0236 00F0      		brlo .L22
+ 413 0238 F0E0      		ldi r31,lo8(gSensorIDs)
+ 414 023a CF2E      		mov r12,r31
+ 415 023c F0E0      		ldi r31,hi8(gSensorIDs)
+ 416 023e DF2E      		mov r13,r31
+ 417 0240 EE24      		clr r14
+ 418 0242 FF24      		clr r15
+ 419 0244 00C0      		rjmp .L23
+ 420               	.L28:
+ 421               	.LM48:
+ 422 0246 80E0      		ldi r24,lo8(c.1761)
+ 423 0248 90E0      		ldi r25,hi8(c.1761)
+ 424 024a 00D0      		rcall uart_puts_p
+ 425               	.LM49:
+ 426 024c 0894      		sec
+ 427 024e E11C      		adc r14,__zero_reg__
+ 428 0250 F11C      		adc r15,__zero_reg__
+ 429               	.LM50:
+ 430 0252 C701      		movw r24,r14
+ 431 0254 00D0      		rcall uart_puti
+ 432               	.LM51:
+ 433 0256 80E0      		ldi r24,lo8(c.1763)
+ 434 0258 90E0      		ldi r25,hi8(c.1763)
+ 435 025a 00D0      		rcall uart_puts_p
+ 436               	.LM52:
+ 437 025c F601      		movw r30,r12
+ 438 025e 8081      		ld r24,Z
+ 439 0260 8031      		cpi r24,lo8(16)
+ 440 0262 01F4      		brne .L24
+ 441               	.LM53:
+ 442 0264 80E0      		ldi r24,lo8(c.1765)
+ 443 0266 90E0      		ldi r25,hi8(c.1765)
+ 444 0268 00C0      		rjmp .L56
+ 445               	.L24:
+ 446               	.LM54:
+ 447 026a 80E0      		ldi r24,lo8(c.1767)
+ 448 026c 90E0      		ldi r25,hi8(c.1767)
+ 449               	.L56:
+ 450 026e 00D0      		rcall uart_puts_p
+ 451               	.LM55:
+ 452 0270 80E0      		ldi r24,lo8(c.1769)
+ 453 0272 90E0      		ldi r25,hi8(c.1769)
+ 454 0274 00D0      		rcall uart_puts_p
+ 455               	.LM56:
+ 456 0276 C601      		movw r24,r12
+ 457 0278 00D0      		rcall DS18X20_get_power_status
+ 458 027a 8823      		tst r24
+ 459 027c 01F4      		brne .L26
+ 460               	.LM57:
+ 461 027e 80E0      		ldi r24,lo8(c.1771)
+ 462 0280 90E0      		ldi r25,hi8(c.1771)
+ 463 0282 00C0      		rjmp .L57
+ 464               	.L26:
+ 465               	.LM58:
+ 466 0284 80E0      		ldi r24,lo8(c.1773)
+ 467 0286 90E0      		ldi r25,hi8(c.1773)
+ 468               	.L57:
+ 469 0288 00D0      		rcall uart_puts_p
+ 470               	.LM59:
+ 471 028a 80E0      		ldi r24,lo8(c.1775)
+ 472 028c 90E0      		ldi r25,hi8(c.1775)
+ 473 028e 00D0      		rcall uart_puts_p
+ 474 0290 88E0      		ldi r24,lo8(8)
+ 475 0292 90E0      		ldi r25,hi8(8)
+ 476 0294 C80E      		add r12,r24
+ 477 0296 D91E      		adc r13,r25
+ 478               	.L23:
+ 479               	.LM60:
+ 480 0298 E116      		cp r14,r17
+ 481 029a 00F0      		brlo .L28
+ 482               	.LM61:
+ 483 029c 1123      		tst r17
+ 484 029e 01F4      		brne .+2
+ 485 02a0 00C0      		rjmp .L29
+ 486               	.LBB128:
+ 487               	.LBB129:
+ 488               	.LM62:
+ 489 02a2 80E0      		ldi r24,lo8(c.1705)
+ 490 02a4 90E0      		ldi r25,hi8(c.1705)
+ 491 02a6 00D0      		rcall uart_puts_p
+ 492               	.LM63:
+ 493 02a8 E4E0      		ldi r30,lo8(4)
+ 494 02aa AE2E      		mov r10,r30
+ 495 02ac B12C      		mov r11,__zero_reg__
+ 496 02ae AC0E      		add r10,r28
+ 497 02b0 BD1E      		adc r11,r29
+ 498 02b2 80E0      		ldi r24,lo8(gSensorIDs)
+ 499 02b4 90E0      		ldi r25,hi8(gSensorIDs)
+ 500 02b6 B501      		movw r22,r10
+ 501 02b8 00D0      		rcall DS18X20_read_scratchpad
+ 502               	.LM64:
+ 503 02ba CE80      		ldd r12,Y+6
+ 504               	.LVL22:
+ 505               	.LM65:
+ 506 02bc EF80      		ldd r14,Y+7
+ 507               	.LVL23:
+ 508               	.LM66:
+ 509 02be 80E0      		ldi r24,lo8(c.1707)
+ 510 02c0 90E0      		ldi r25,hi8(c.1707)
+ 511 02c2 00D0      		rcall uart_puts_p
+ 512               	.LM67:
+ 513 02c4 8C2D      		mov r24,r12
+ 514 02c6 90E0      		ldi r25,lo8(0)
+ 515 02c8 00D0      		rcall uart_puti
+ 516               	.LM68:
+ 517 02ca 80E0      		ldi r24,lo8(c.1709)
+ 518 02cc 90E0      		ldi r25,hi8(c.1709)
+ 519 02ce 00D0      		rcall uart_puts_p
+ 520               	.LM69:
+ 521 02d0 8E2D      		mov r24,r14
+ 522 02d2 90E0      		ldi r25,lo8(0)
+ 523 02d4 00D0      		rcall uart_puti
+ 524               	.LM70:
+ 525 02d6 80E0      		ldi r24,lo8(c.1711)
+ 526 02d8 90E0      		ldi r25,hi8(c.1711)
+ 527 02da 00D0      		rcall uart_puts_p
+ 528               	.LM71:
+ 529 02dc E394      		inc r14
+ 530               	.LVL24:
+ 531 02de C394      		inc r12
+ 532               	.LVL25:
+ 533               	.LM72:
+ 534 02e0 80E0      		ldi r24,lo8(gSensorIDs)
+ 535 02e2 90E0      		ldi r25,hi8(gSensorIDs)
+ 536 02e4 6C2D      		mov r22,r12
+ 537 02e6 4E2D      		mov r20,r14
+ 538 02e8 20E6      		ldi r18,lo8(96)
+ 539 02ea 00D0      		rcall DS18X20_write_scratchpad
+ 540               	.LM73:
+ 541 02ec 80E0      		ldi r24,lo8(c.1713)
+ 542 02ee 90E0      		ldi r25,hi8(c.1713)
+ 543 02f0 00D0      		rcall uart_puts_p
+ 544               	.LM74:
+ 545 02f2 80E0      		ldi r24,lo8(0)
+ 546 02f4 60E0      		ldi r22,lo8(gSensorIDs)
+ 547 02f6 70E0      		ldi r23,hi8(gSensorIDs)
+ 548 02f8 00D0      		rcall DS18X20_copy_scratchpad
+ 549               	.LM75:
+ 550 02fa 80E0      		ldi r24,lo8(c.1715)
+ 551 02fc 90E0      		ldi r25,hi8(c.1715)
+ 552 02fe 00D0      		rcall uart_puts_p
+ 553               	.LM76:
+ 554 0300 80E0      		ldi r24,lo8(gSensorIDs)
+ 555 0302 90E0      		ldi r25,hi8(gSensorIDs)
+ 556 0304 00D0      		rcall DS18X20_recall_E2
+ 557               	.LM77:
+ 558 0306 80E0      		ldi r24,lo8(c.1717)
+ 559 0308 90E0      		ldi r25,hi8(c.1717)
+ 560 030a 00D0      		rcall uart_puts_p
+ 561               	.LM78:
+ 562 030c 80E0      		ldi r24,lo8(gSensorIDs)
+ 563 030e 90E0      		ldi r25,hi8(gSensorIDs)
+ 564 0310 B501      		movw r22,r10
+ 565 0312 00D0      		rcall DS18X20_read_scratchpad
+ 566               	.LM79:
+ 567 0314 8E81      		ldd r24,Y+6
+ 568 0316 C816      		cp r12,r24
+ 569 0318 01F4      		brne .L30
+ 570 031a 8F81      		ldd r24,Y+7
+ 571 031c E816      		cp r14,r24
+ 572 031e 01F4      		brne .L30
+ 573               	.LM80:
+ 574 0320 80E0      		ldi r24,lo8(c.1719)
+ 575 0322 90E0      		ldi r25,hi8(c.1719)
+ 576 0324 00C0      		rjmp .L58
+ 577               	.L30:
+ 578               	.LM81:
+ 579 0326 80E0      		ldi r24,lo8(c.1721)
+ 580 0328 90E0      		ldi r25,hi8(c.1721)
+ 581               	.L58:
+ 582 032a 00D0      		rcall uart_puts_p
+ 583               	.LM82:
+ 584 032c CE80      		ldd r12,Y+6
+ 585               	.LVL26:
+ 586               	.LM83:
+ 587 032e EF80      		ldd r14,Y+7
+ 588               	.LVL27:
+ 589               	.LM84:
+ 590 0330 80E0      		ldi r24,lo8(c.1723)
+ 591 0332 90E0      		ldi r25,hi8(c.1723)
+ 592 0334 00D0      		rcall uart_puts_p
+ 593               	.LM85:
+ 594 0336 8C2D      		mov r24,r12
+ 595 0338 90E0      		ldi r25,lo8(0)
+ 596 033a 00D0      		rcall uart_puti
+ 597               	.LM86:
+ 598 033c 80E0      		ldi r24,lo8(c.1725)
+ 599 033e 90E0      		ldi r25,hi8(c.1725)
+ 600 0340 00D0      		rcall uart_puts_p
+ 601               	.LM87:
+ 602 0342 8E2D      		mov r24,r14
+ 603 0344 90E0      		ldi r25,lo8(0)
+ 604 0346 00D0      		rcall uart_puti
+ 605               	.LM88:
+ 606 0348 80E0      		ldi r24,lo8(c.1727)
+ 607 034a 90E0      		ldi r25,hi8(c.1727)
+ 608 034c 00D0      		rcall uart_puts_p
+ 609               	.LBE129:
+ 610               	.LBE128:
+ 611               	.LM89:
+ 612 034e 1130      		cpi r17,lo8(1)
+ 613 0350 01F4      		brne .L29
+ 614               	.LM90:
+ 615 0352 80E0      		ldi r24,lo8(c.1780)
+ 616 0354 90E0      		ldi r25,hi8(c.1780)
+ 617 0356 00D0      		rcall uart_puts_p
+ 618               	.LM91:
+ 619 0358 E090 0000 		lds r14,gSensorIDs
+ 620               	.LVL28:
+ 621               	.LM92:
+ 622 035c 80E0      		ldi r24,lo8(0)
+ 623 035e 60E0      		ldi r22,lo8(0)
+ 624 0360 70E0      		ldi r23,hi8(0)
+ 625 0362 00D0      		rcall DS18X20_start_meas
+ 626 0364 8CE4      		ldi r24,lo8(7500)
+ 627 0366 9DE1      		ldi r25,hi8(7500)
+ 628               	.LVL29:
+ 629               	.LBB130:
+ 630               	.LBB131:
+ 631               	.LBB132:
+ 632               	.LBB133:
+ 633               	.LM93:
+ 634 0368 2CE5      		ldi r18,lo8(92)
+ 635 036a 30E0      		ldi r19,hi8(92)
+ 636               	.L32:
+ 637 036c F901      		movw r30,r18
+ 638               	.LVL30:
+ 639               	/* #APP */
+ 640               	 ;  105 "/usr/lib/gcc/avr/4.4.2/../../../../avr/include/util/delay_basic.h" 1
+ 641 036e 3197      		1: sbiw r30,1
+ 642 0370 01F4      		brne 1b
+ 643               	 ;  0 "" 2
+ 644               	/* #NOAPP */
+ 645               	.LBE133:
+ 646               	.LBE132:
+ 647               	.LM94:
+ 648 0372 0197      		sbiw r24,1
+ 649               	.LM95:
+ 650 0374 01F4      		brne .L32
+ 651               	.LBE131:
+ 652               	.LBE130:
+ 653               	.LM96:
+ 654 0376 8E2D      		mov r24,r14
+ 655               	.LVL31:
+ 656 0378 BE01      		movw r22,r28
+ 657 037a 6F5F      		subi r22,lo8(-(1))
+ 658 037c 7F4F      		sbci r23,hi8(-(1))
+ 659 037e AE01      		movw r20,r28
+ 660 0380 4E5F      		subi r20,lo8(-(2))
+ 661 0382 5F4F      		sbci r21,hi8(-(2))
+ 662 0384 9E01      		movw r18,r28
+ 663 0386 2D5F      		subi r18,lo8(-(3))
+ 664 0388 3F4F      		sbci r19,hi8(-(3))
+ 665 038a 00D0      		rcall DS18X20_read_meas_single
+ 666               	.LVL32:
+ 667               	.LM97:
+ 668 038c 8981      		ldd r24,Y+1
+ 669               	.LVL33:
+ 670 038e 6A81      		ldd r22,Y+2
+ 671               	.LVL34:
+ 672 0390 4B81      		ldd r20,Y+3
+ 673               	.LVL35:
+ 674 0392 00D0      		rcall uart_put_temp
+ 675               	.LM98:
+ 676 0394 80E0      		ldi r24,lo8(c.1782)
+ 677 0396 90E0      		ldi r25,hi8(c.1782)
+ 678 0398 00D0      		rcall uart_puts_p
+ 679               	.LVL36:
+ 680               	.L29:
+ 681               	.LBB134:
+ 682               	.LBB135:
+ 683               	.LBB136:
+ 684               	.LBB137:
+ 685               	.LM99:
+ 686 039a 7CE5      		ldi r23,lo8(92)
+ 687 039c E72E      		mov r14,r23
+ 688 039e F12C      		mov r15,__zero_reg__
+ 689               	.LVL37:
+ 690               	.LBE137:
+ 691               	.LBE136:
+ 692               	.LBE135:
+ 693               	.LBE134:
+ 694               	.LM100:
+ 695 03a0 62E0      		ldi r22,lo8(2)
+ 696 03a2 662E      		mov r6,r22
+ 697 03a4 712C      		mov r7,__zero_reg__
+ 698 03a6 6C0E      		add r6,r28
+ 699 03a8 7D1E      		adc r7,r29
+ 700 03aa 53E0      		ldi r21,lo8(3)
+ 701 03ac 452E      		mov r4,r21
+ 702 03ae 512C      		mov r5,__zero_reg__
+ 703 03b0 4C0E      		add r4,r28
+ 704 03b2 5D1E      		adc r5,r29
+ 705 03b4 4E01      		movw r8,r28
+ 706 03b6 0894      		sec
+ 707 03b8 811C      		adc r8,__zero_reg__
+ 708 03ba 911C      		adc r9,__zero_reg__
+ 709               	.LVL38:
+ 710               	.L55:
+ 711               	.LM101:
+ 712 03bc 80E0      		ldi r24,lo8(c.1784)
+ 713 03be 90E0      		ldi r25,hi8(c.1784)
+ 714               	.LVL39:
+ 715 03c0 00D0      		rcall uart_puts_p
+ 716               	.LVL40:
+ 717 03c2 C12E      		mov r12,r17
+ 718               	.LVL41:
+ 719               	.LM102:
+ 720 03c4 00C0      		rjmp .L33
+ 721               	.L39:
+ 722               	.LM103:
+ 723 03c6 AC2C      		mov r10,r12
+ 724 03c8 BB24      		clr r11
+ 725 03ca 43E0      		ldi r20,3
+ 726 03cc AA0C      	1:	lsl r10
+ 727 03ce BB1C      		rol r11
+ 728 03d0 4A95      		dec r20
+ 729 03d2 01F4      		brne 1b
+ 730 03d4 E0E0      		ldi r30,lo8(gSensorIDs-8)
+ 731 03d6 F0E0      		ldi r31,hi8(gSensorIDs-8)
+ 732 03d8 AE0E      		add r10,r30
+ 733 03da BF1E      		adc r11,r31
+ 734 03dc 80E0      		ldi r24,lo8(0)
+ 735 03de B501      		movw r22,r10
+ 736 03e0 00D0      		rcall DS18X20_start_meas
+ 737 03e2 8823      		tst r24
+ 738 03e4 01F4      		brne .L34
+ 739 03e6 8CE4      		ldi r24,lo8(7500)
+ 740 03e8 9DE1      		ldi r25,hi8(7500)
+ 741               	.LVL42:
+ 742               	.L35:
+ 743               	.LBB141:
+ 744               	.LBB140:
+ 745               	.LBB139:
+ 746               	.LBB138:
+ 747               	.LM104:
+ 748 03ea F701      		movw r30,r14
+ 749               	.LVL43:
+ 750               	/* #APP */
+ 751               	 ;  105 "/usr/lib/gcc/avr/4.4.2/../../../../avr/include/util/delay_basic.h" 1
+ 752 03ec 3197      		1: sbiw r30,1
+ 753 03ee 01F4      		brne 1b
+ 754               	 ;  0 "" 2
+ 755               	/* #NOAPP */
+ 756               	.LBE138:
+ 757               	.LBE139:
+ 758               	.LM105:
+ 759 03f0 0197      		sbiw r24,1
+ 760               	.LM106:
+ 761 03f2 01F4      		brne .L35
+ 762               	.LBE140:
+ 763               	.LBE141:
+ 764               	.LM107:
+ 765 03f4 80E0      		ldi r24,lo8(c.1786)
+ 766 03f6 90E0      		ldi r25,hi8(c.1786)
+ 767               	.LVL44:
+ 768 03f8 00D0      		rcall uart_puts_p
+ 769               	.LVL45:
+ 770               	.LM108:
+ 771 03fa 8C2D      		mov r24,r12
+ 772 03fc 90E0      		ldi r25,lo8(0)
+ 773 03fe 00D0      		rcall uart_puti
+ 774               	.LM109:
+ 775 0400 80E0      		ldi r24,lo8(c.1788)
+ 776 0402 90E0      		ldi r25,hi8(c.1788)
+ 777 0404 00D0      		rcall uart_puts_p
+ 778               	.LM110:
+ 779 0406 C501      		movw r24,r10
+ 780 0408 B401      		movw r22,r8
+ 781 040a A301      		movw r20,r6
+ 782 040c 9201      		movw r18,r4
+ 783 040e 00D0      		rcall DS18X20_read_meas
+ 784 0410 8823      		tst r24
+ 785 0412 01F4      		brne .L36
+ 786               	.LM111:
+ 787 0414 8981      		ldd r24,Y+1
+ 788 0416 6A81      		ldd r22,Y+2
+ 789 0418 4B81      		ldd r20,Y+3
+ 790 041a 00D0      		rcall uart_put_temp
+ 791 041c 00C0      		rjmp .L37
+ 792               	.L36:
+ 793               	.LM112:
+ 794 041e 80E0      		ldi r24,lo8(c.1790)
+ 795 0420 90E0      		ldi r25,hi8(c.1790)
+ 796 0422 00D0      		rcall uart_puts_p
+ 797               	.L37:
+ 798               	.LM113:
+ 799 0424 80E0      		ldi r24,lo8(c.1792)
+ 800 0426 90E0      		ldi r25,hi8(c.1792)
+ 801 0428 00C0      		rjmp .L59
+ 802               	.L34:
+ 803               	.LM114:
+ 804 042a 80E0      		ldi r24,lo8(c.1794)
+ 805 042c 90E0      		ldi r25,hi8(c.1794)
+ 806               	.L59:
+ 807 042e 00D0      		rcall uart_puts_p
+ 808               	.LM115:
+ 809 0430 CA94      		dec r12
+ 810               	.L33:
+ 811 0432 CC20      		tst r12
+ 812 0434 01F4      		brne .L39
+ 813               	.LM116:
+ 814 0436 80E0      		ldi r24,lo8(c.1799)
+ 815 0438 90E0      		ldi r25,hi8(c.1799)
+ 816 043a 00D0      		rcall uart_puts_p
+ 817               	.LM117:
+ 818 043c 80E0      		ldi r24,lo8(0)
+ 819 043e 60E0      		ldi r22,lo8(0)
+ 820 0440 70E0      		ldi r23,hi8(0)
+ 821 0442 00D0      		rcall DS18X20_start_meas
+ 822 0444 8823      		tst r24
+ 823 0446 01F4      		brne .L40
+ 824 0448 8CE4      		ldi r24,lo8(7500)
+ 825 044a 9DE1      		ldi r25,hi8(7500)
+ 826               	.LVL46:
+ 827               	.L41:
+ 828               	.LBB142:
+ 829               	.LBB143:
+ 830               	.LBB144:
+ 831               	.LBB145:
+ 832               	.LM118:
+ 833 044c F701      		movw r30,r14
+ 834               	.LVL47:
+ 835               	/* #APP */
+ 836               	 ;  105 "/usr/lib/gcc/avr/4.4.2/../../../../avr/include/util/delay_basic.h" 1
+ 837 044e 3197      		1: sbiw r30,1
+ 838 0450 01F4      		brne 1b
+ 839               	 ;  0 "" 2
+ 840               	/* #NOAPP */
+ 841               	.LBE145:
+ 842               	.LBE144:
+ 843               	.LM119:
+ 844 0452 0197      		sbiw r24,1
+ 845               	.LM120:
+ 846 0454 01F4      		brne .L41
+ 847 0456 30E0      		ldi r19,lo8(gSensorIDs)
+ 848 0458 A32E      		mov r10,r19
+ 849 045a 30E0      		ldi r19,hi8(gSensorIDs)
+ 850 045c B32E      		mov r11,r19
+ 851 045e CC24      		clr r12
+ 852 0460 DD24      		clr r13
+ 853               	.LVL48:
+ 854 0462 00C0      		rjmp .L42
+ 855               	.L45:
+ 856               	.LBE143:
+ 857               	.LBE142:
+ 858               	.LM121:
+ 859 0464 80E0      		ldi r24,lo8(c.1801)
+ 860 0466 90E0      		ldi r25,hi8(c.1801)
+ 861               	.LVL49:
+ 862 0468 00D0      		rcall uart_puts_p
+ 863               	.LVL50:
+ 864               	.LM122:
+ 865 046a 0894      		sec
+ 866 046c C11C      		adc r12,__zero_reg__
+ 867 046e D11C      		adc r13,__zero_reg__
+ 868               	.LM123:
+ 869 0470 C601      		movw r24,r12
+ 870 0472 00D0      		rcall uart_puti
+ 871               	.LM124:
+ 872 0474 80E0      		ldi r24,lo8(c.1803)
+ 873 0476 90E0      		ldi r25,hi8(c.1803)
+ 874 0478 00D0      		rcall uart_puts_p
+ 875               	.LM125:
+ 876 047a C501      		movw r24,r10
+ 877 047c B401      		movw r22,r8
+ 878 047e A301      		movw r20,r6
+ 879 0480 9201      		movw r18,r4
+ 880 0482 00D0      		rcall DS18X20_read_meas
+ 881 0484 8823      		tst r24
+ 882 0486 01F4      		brne .L43
+ 883               	.LM126:
+ 884 0488 8981      		ldd r24,Y+1
+ 885 048a 6A81      		ldd r22,Y+2
+ 886 048c 4B81      		ldd r20,Y+3
+ 887 048e 00D0      		rcall uart_put_temp
+ 888 0490 00C0      		rjmp .L44
+ 889               	.L43:
+ 890               	.LM127:
+ 891 0492 80E0      		ldi r24,lo8(c.1805)
+ 892 0494 90E0      		ldi r25,hi8(c.1805)
+ 893 0496 00D0      		rcall uart_puts_p
+ 894               	.L44:
+ 895               	.LM128:
+ 896 0498 80E0      		ldi r24,lo8(c.1807)
+ 897 049a 90E0      		ldi r25,hi8(c.1807)
+ 898 049c 00D0      		rcall uart_puts_p
+ 899 049e 88E0      		ldi r24,lo8(8)
+ 900 04a0 90E0      		ldi r25,hi8(8)
+ 901 04a2 A80E      		add r10,r24
+ 902 04a4 B91E      		adc r11,r25
+ 903               	.LVL51:
+ 904               	.L42:
+ 905               	.LM129:
+ 906 04a6 C116      		cp r12,r17
+ 907 04a8 00F0      		brlo .L45
+ 908 04aa 00C0      		rjmp .L46
+ 909               	.LVL52:
+ 910               	.L40:
+ 911               	.LM130:
+ 912 04ac 80E0      		ldi r24,lo8(c.1812)
+ 913 04ae 90E0      		ldi r25,hi8(c.1812)
+ 914 04b0 00D0      		rcall uart_puts_p
+ 915               	.LVL53:
+ 916               	.L46:
+ 917               	.LM131:
+ 918 04b2 80E0      		ldi r24,lo8(c.1814)
+ 919 04b4 90E0      		ldi r25,hi8(c.1814)
+ 920               	.LVL54:
+ 921 04b6 00D0      		rcall uart_puts_p
+ 922               	.LVL55:
+ 923               	.LM132:
+ 924 04b8 80E0      		ldi r24,lo8(0)
+ 925 04ba 60E0      		ldi r22,lo8(0)
+ 926 04bc 70E0      		ldi r23,hi8(0)
+ 927 04be 00D0      		rcall DS18X20_start_meas
+ 928 04c0 8CE4      		ldi r24,lo8(7500)
+ 929 04c2 9DE1      		ldi r25,hi8(7500)
+ 930               	.LVL56:
+ 931               	.L47:
+ 932               	.LBB146:
+ 933               	.LBB147:
+ 934               	.LBB148:
+ 935               	.LBB149:
+ 936               	.LM133:
+ 937 04c4 F701      		movw r30,r14
+ 938               	.LVL57:
+ 939               	/* #APP */
+ 940               	 ;  105 "/usr/lib/gcc/avr/4.4.2/../../../../avr/include/util/delay_basic.h" 1
+ 941 04c6 3197      		1: sbiw r30,1
+ 942 04c8 01F4      		brne 1b
+ 943               	 ;  0 "" 2
+ 944               	/* #NOAPP */
+ 945               	.LBE149:
+ 946               	.LBE148:
+ 947               	.LM134:
+ 948 04ca 0197      		sbiw r24,1
+ 949               	.LM135:
+ 950 04cc 01F4      		brne .L47
+ 951               	.LBE147:
+ 952               	.LBE146:
+ 953               	.LM136:
+ 954 04ce 00D0      		rcall DS18X20_read_meas_all_verbose
+ 955               	.LVL58:
+ 956 04d0 80E3      		ldi r24,lo8(30000)
+ 957 04d2 95E7      		ldi r25,hi8(30000)
+ 958               	.LVL59:
+ 959               	.L48:
+ 960               	.LBB150:
+ 961               	.LBB151:
+ 962               	.LBB152:
+ 963               	.LBB153:
+ 964               	.LM137:
+ 965 04d4 F701      		movw r30,r14
+ 966               	.LVL60:
+ 967               	/* #APP */
+ 968               	 ;  105 "/usr/lib/gcc/avr/4.4.2/../../../../avr/include/util/delay_basic.h" 1
+ 969 04d6 3197      		1: sbiw r30,1
+ 970 04d8 01F4      		brne 1b
+ 971               	 ;  0 "" 2
+ 972               	/* #NOAPP */
+ 973               	.LBE153:
+ 974               	.LBE152:
+ 975               	.LM138:
+ 976 04da 0197      		sbiw r24,1
+ 977               	.LM139:
+ 978 04dc 01F4      		brne .L48
+ 979 04de 00C0      		rjmp .L55
+ 980               	.LBE151:
+ 981               	.LBE150:
+ 982               	.LFE7:
+ 984               		.section	.progmem.data,"a",@progbits
+ 987               	c.1814:
+ 988 0000 0D0A 5665 		.string	"\r\nVerbose output\r\n"
+ 988      7262 6F73 
+ 988      6520 6F75 
+ 988      7470 7574 
+ 988      0D0A 00
+ 991               	c.1812:
+ 992 0013 5374 6172 		.string	"Start meas. failed (short circuit?)\r\n"
+ 992      7420 6D65 
+ 992      6173 2E20 
+ 992      6661 696C 
+ 992      6564 2028 
+ 995               	c.1807:
+ 996 0039 0D0A 00   		.string	"\r\n"
+ 999               	c.1805:
+ 1000 003c 4352 4320 		.string	"CRC Error (lost connection?)\r\n"
+ 1000      4572 726F 
+ 1000      7220 286C 
+ 1000      6F73 7420 
+ 1000      636F 6E6E 
+ 1003               	c.1803:
+ 1004 005b 203D 2000 		.string	" = "
+ 1007               	c.1801:
+ 1008 005f 5365 6E73 		.string	"Sensor# "
+ 1008      6F72 2320 
+ 1008      00
+ 1011               	c.1799:
+ 1012 0068 0D0A 436F 		.string	"\r\nConvert_T for all Sensors and Read Sensor by Sensor\r\n"
+ 1012      6E76 6572 
+ 1012      745F 5420 
+ 1012      666F 7220 
+ 1012      616C 6C20 
+ 1015               	c.1794:
+ 1016 00a0 5374 6172 		.string	"Start meas. failed (short circuit?)\r\n"
+ 1016      7420 6D65 
+ 1016      6173 2E20 
+ 1016      6661 696C 
+ 1016      6564 2028 
+ 1019               	c.1792:
+ 1020 00c6 0D0A 00   		.string	"\r\n"
+ 1023               	c.1790:
+ 1024 00c9 4352 4320 		.string	"CRC Error (lost connection?)\r\n"
+ 1024      4572 726F 
+ 1024      7220 286C 
+ 1024      6F73 7420 
+ 1024      636F 6E6E 
+ 1027               	c.1788:
+ 1028 00e8 203D 2000 		.string	" = "
+ 1031               	c.1786:
+ 1032 00ec 5365 6E73 		.string	"Sensor# "
+ 1032      6F72 2320 
+ 1032      00
+ 1035               	c.1784:
+ 1036 00f5 0D0A 436F 		.string	"\r\nConvert_T and Read Sensor by Sensor (reverse order)\r\n"
+ 1036      6E76 6572 
+ 1036      745F 5420 
+ 1036      616E 6420 
+ 1036      5265 6164 
+ 1039               	c.1782:
+ 1040 012d 0D0A 00   		.string	"\r\n"
+ 1043               	c.1780:
+ 1044 0130 0D0A 5468 		.string	"\r\nThere is only one sensor -> Demo of \"read_meas_single\":\r\n"
+ 1044      6572 6520 
+ 1044      6973 206F 
+ 1044      6E6C 7920 
+ 1044      6F6E 6520 
+ 1047               	c.1775:
+ 1048 016c 2070 6F77 		.string	" powered\r\n"
+ 1048      6572 6564 
+ 1048      0D0A 00
+ 1051               	c.1773:
+ 1052 0177 6578 7465 		.string	"externally"
+ 1052      726E 616C 
+ 1052      6C79 00
+ 1055               	c.1771:
+ 1056 0182 7061 7261 		.string	"parasite"
+ 1056      7369 7465 
+ 1056      00
+ 1059               	c.1769:
+ 1060 018b 2077 6869 		.string	" which is "
+ 1060      6368 2069 
+ 1060      7320 00
+ 1063               	c.1767:
+ 1064 0196 4453 3138 		.string	"DS18B20"
+ 1064      4232 3000 
+ 1067               	c.1765:
+ 1068 019e 4453 3138 		.string	"DS18S20/DS1820"
+ 1068      5332 302F 
+ 1068      4453 3138 
+ 1068      3230 00
+ 1071               	c.1763:
+ 1072 01ad 2069 7320 		.string	" is a "
+ 1072      6120 00
+ 1075               	c.1761:
+ 1076 01b4 5365 6E73 		.string	"Sensor# "
+ 1076      6F72 2320 
+ 1076      00
+ 1079               	c.1756:
+ 1080 01bd 0D0A 00   		.string	"\r\n"
+ 1083               	c.1754:
+ 1084 01c0 203A 2000 		.string	" : "
+ 1087               	c.1752:
+ 1088 01c4 2320 696E 		.string	"# in Bus :"
+ 1088      2042 7573 
+ 1088      203A 00
+ 1091               	c.1750:
+ 1092 01cf 2044 5331 		.string	" DS18X20 Sensor(s) available:\r\n"
+ 1092      3858 3230 
+ 1092      2053 656E 
+ 1092      736F 7228 
+ 1092      7329 2061 
+ 1095               	c.1748:
+ 1096 01ef 2D2D 2D2D 		.string	"-------------------------------------------"
+ 1096      2D2D 2D2D 
+ 1096      2D2D 2D2D 
+ 1096      2D2D 2D2D 
+ 1096      2D2D 2D2D 
+ 1099               	c.1746:
+ 1100 021b 0D0A 4453 		.string	"\r\nDS18X20 1-Wire-Reader Demo by Martin Thomas\r\n"
+ 1100      3138 5832 
+ 1100      3020 312D 
+ 1100      5769 7265 
+ 1100      2D52 6561 
+ 1103               	c.1727:
+ 1104 024b 0D0A 00   		.string	"\r\n"
+ 1107               	c.1725:
+ 1108 024e 202F 2000 		.string	" / "
+ 1111               	c.1723:
+ 1112 0252 5448 2F54 		.string	"TH/TL from EEPROM sensor 1 now : "
+ 1112      4C20 6672 
+ 1112      6F6D 2045 
+ 1112      4550 524F 
+ 1112      4D20 7365 
+ 1115               	c.1721:
+ 1116 0274 7665 7269 		.string	"verify failed\r\n"
+ 1116      6679 2066 
+ 1116      6169 6C65 
+ 1116      640D 0A00 
+ 1119               	c.1719:
+ 1120 0284 5448 2061 		.string	"TH and TL verified\r\n"
+ 1120      6E64 2054 
+ 1120      4C20 7665 
+ 1120      7269 6669 
+ 1120      6564 0D0A 
+ 1123               	c.1717:
+ 1124 0299 4453 3138 		.string	"DS18x20 EEPROM copied back to scratchpad\r\n"
+ 1124      7832 3020 
+ 1124      4545 5052 
+ 1124      4F4D 2063 
+ 1124      6F70 6965 
+ 1127               	c.1715:
+ 1128 02c4 7363 7261 		.string	"scratchpad copied to DS18x20 EEPROM\r\n"
+ 1128      7463 6870 
+ 1128      6164 2063 
+ 1128      6F70 6965 
+ 1128      6420 746F 
+ 1131               	c.1713:
+ 1132 02ea 5448 2B31 		.string	"TH+1 and TL+1 written to scratchpad\r\n"
+ 1132      2061 6E64 
+ 1132      2054 4C2B 
+ 1132      3120 7772 
+ 1132      6974 7465 
+ 1135               	c.1711:
+ 1136 0310 0D0A 00   		.string	"\r\n"
+ 1139               	c.1709:
+ 1140 0313 202F 2000 		.string	" / "
+ 1143               	c.1707:
+ 1144 0317 5448 2F54 		.string	"TH/TL from EEPROM sensor 1 : "
+ 1144      4C20 6672 
+ 1144      6F6D 2045 
+ 1144      4550 524F 
+ 1144      4D20 7365 
+ 1147               	c.1705:
+ 1148 0335 0D0A 4453 		.string	"\r\nDS18x20 EEPROM support test for fist sensor\r\n"
+ 1148      3138 7832 
+ 1148      3020 4545 
+ 1148      5052 4F4D 
+ 1148      2073 7570 
+ 1151               	c.1678:
+ 1152 0365 B043 5D00 		.string	"\260C]"
+ 1155               	c.1676:
+ 1156 0369 2E00      		.string	"."
+ 1159               	c.1674:
+ 1160 036b B043 205B 		.string	"\260C ["
+ 1160      00
+ 1163               	c.1669:
+ 1164 0370 3000      		.string	"0"
+ 1167               	c.1667:
+ 1168 0372 2E00      		.string	"."
+ 1171               	c.1641:
+ 1172 0374 4275 7320 		.string	"Bus Error\r\n"
+ 1172      4572 726F 
+ 1172      720D 0A00 
+ 1175               	c.1638:
+ 1176 0380 4E6F 2053 		.string	"No Sensor found\r\n"
+ 1176      656E 736F 
+ 1176      7220 666F 
+ 1176      756E 640D 
+ 1176      0A00 
+ 1179               	c.1636:
+ 1180 0392 0D0A 5363 		.string	"\r\nScanning Bus for DS18X20\r\n"
+ 1180      616E 6E69 
+ 1180      6E67 2042 
+ 1180      7573 2066 
+ 1180      6F72 2044 
+ 1181               		.comm gSensorIDs,40,1
+ 1222               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+     /tmp/ccSvqkzD.s:2      *ABS*:0000003f __SREG__
+     /tmp/ccSvqkzD.s:3      *ABS*:0000003e __SP_H__
+     /tmp/ccSvqkzD.s:4      *ABS*:0000003d __SP_L__
+     /tmp/ccSvqkzD.s:5      *ABS*:00000000 __tmp_reg__
+     /tmp/ccSvqkzD.s:6      *ABS*:00000001 __zero_reg__
+     /tmp/ccSvqkzD.s:19     .text:00000000 uart_put_temp
+     /tmp/ccSvqkzD.s:1167   .progmem.data:00000372 c.1667
+     /tmp/ccSvqkzD.s:1163   .progmem.data:00000370 c.1669
+     /tmp/ccSvqkzD.s:1159   .progmem.data:0000036b c.1674
+     /tmp/ccSvqkzD.s:1155   .progmem.data:00000369 c.1676
+     /tmp/ccSvqkzD.s:1151   .progmem.data:00000365 c.1678
+     /tmp/ccSvqkzD.s:178    .text:000000e2 search_sensors
+     /tmp/ccSvqkzD.s:1179   .progmem.data:00000392 c.1636
+     /tmp/ccSvqkzD.s:1175   .progmem.data:00000380 c.1638
+     /tmp/ccSvqkzD.s:1171   .progmem.data:00000374 c.1641
+                            *COM*:00000028 gSensorIDs
+     /tmp/ccSvqkzD.s:314    .text:000001a6 main
+     /tmp/ccSvqkzD.s:1099   .progmem.data:0000021b c.1746
+     /tmp/ccSvqkzD.s:1095   .progmem.data:000001ef c.1748
+     /tmp/ccSvqkzD.s:1091   .progmem.data:000001cf c.1750
+     /tmp/ccSvqkzD.s:1087   .progmem.data:000001c4 c.1752
+     /tmp/ccSvqkzD.s:1083   .progmem.data:000001c0 c.1754
+     /tmp/ccSvqkzD.s:1079   .progmem.data:000001bd c.1756
+     /tmp/ccSvqkzD.s:1075   .progmem.data:000001b4 c.1761
+     /tmp/ccSvqkzD.s:1071   .progmem.data:000001ad c.1763
+     /tmp/ccSvqkzD.s:1067   .progmem.data:0000019e c.1765
+     /tmp/ccSvqkzD.s:1063   .progmem.data:00000196 c.1767
+     /tmp/ccSvqkzD.s:1059   .progmem.data:0000018b c.1769
+     /tmp/ccSvqkzD.s:1055   .progmem.data:00000182 c.1771
+     /tmp/ccSvqkzD.s:1051   .progmem.data:00000177 c.1773
+     /tmp/ccSvqkzD.s:1047   .progmem.data:0000016c c.1775
+     /tmp/ccSvqkzD.s:1147   .progmem.data:00000335 c.1705
+     /tmp/ccSvqkzD.s:1143   .progmem.data:00000317 c.1707
+     /tmp/ccSvqkzD.s:1139   .progmem.data:00000313 c.1709
+     /tmp/ccSvqkzD.s:1135   .progmem.data:00000310 c.1711
+     /tmp/ccSvqkzD.s:1131   .progmem.data:000002ea c.1713
+     /tmp/ccSvqkzD.s:1127   .progmem.data:000002c4 c.1715
+     /tmp/ccSvqkzD.s:1123   .progmem.data:00000299 c.1717
+     /tmp/ccSvqkzD.s:1119   .progmem.data:00000284 c.1719
+     /tmp/ccSvqkzD.s:1115   .progmem.data:00000274 c.1721
+     /tmp/ccSvqkzD.s:1111   .progmem.data:00000252 c.1723
+     /tmp/ccSvqkzD.s:1107   .progmem.data:0000024e c.1725
+     /tmp/ccSvqkzD.s:1103   .progmem.data:0000024b c.1727
+     /tmp/ccSvqkzD.s:1043   .progmem.data:00000130 c.1780
+     /tmp/ccSvqkzD.s:1039   .progmem.data:0000012d c.1782
+     /tmp/ccSvqkzD.s:1035   .progmem.data:000000f5 c.1784
+     /tmp/ccSvqkzD.s:1031   .progmem.data:000000ec c.1786
+     /tmp/ccSvqkzD.s:1027   .progmem.data:000000e8 c.1788
+     /tmp/ccSvqkzD.s:1023   .progmem.data:000000c9 c.1790
+     /tmp/ccSvqkzD.s:1019   .progmem.data:000000c6 c.1792
+     /tmp/ccSvqkzD.s:1015   .progmem.data:000000a0 c.1794
+     /tmp/ccSvqkzD.s:1011   .progmem.data:00000068 c.1799
+     /tmp/ccSvqkzD.s:1007   .progmem.data:0000005f c.1801
+     /tmp/ccSvqkzD.s:1003   .progmem.data:0000005b c.1803
+     /tmp/ccSvqkzD.s:999    .progmem.data:0000003c c.1805
+     /tmp/ccSvqkzD.s:995    .progmem.data:00000039 c.1807
+     /tmp/ccSvqkzD.s:991    .progmem.data:00000013 c.1812
+     /tmp/ccSvqkzD.s:987    .progmem.data:00000000 c.1814
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+uart_putc
+uart_puti
+uart_puts_p
+itoa
+uart_puts
+DS18X20_temp_to_decicel
+__udivmodhi4
+DS18X20_find_sensor
+uart_init
+DS18X20_show_id_uart
+DS18X20_get_power_status
+DS18X20_read_scratchpad
+DS18X20_write_scratchpad
+DS18X20_copy_scratchpad
+DS18X20_recall_E2
+DS18X20_start_meas
+DS18X20_read_meas_single
+DS18X20_read_meas
+DS18X20_read_meas_all_verbose

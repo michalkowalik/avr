@@ -1,0 +1,6 @@
+Digital Thermometer with sensor DS1820.
+-55C - +99C on LCD-display (16x1)	 
+Version: 0.21
+Developer: Claes Sundman (menola@home.se)
+
+http://www.menola.com/avr/ThermometerLCD/

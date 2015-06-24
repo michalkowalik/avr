@@ -1,0 +1,490 @@
+GAS LISTING /tmp/ccn8ixWI.s 			page 1
+
+
+   1               		.file	"serial2.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.global __do_copy_data
+   8               		.global __do_clear_bss
+   9               		.stabs	"/home/mkowalik/kleiberdev/svn/serial/",100,0,2,.Ltext0
+  10               		.stabs	"serial2.c",100,0,2,.Ltext0
+  11               		.text
+  12               	.Ltext0:
+  13               		.stabs	"gcc2_compiled.",60,0,0,0
+  14               		.stabs	"int:t(0,1)=r(0,1);-32768;32767;",128,0,1,0
+  15               		.stabs	"char:t(0,2)=@s8;r(0,2);0;255;",128,0,1,0
+  16               		.stabs	"long int:t(0,3)=@s32;r(0,3);020000000000;017777777777;",128,0,1,0
+  17               		.stabs	"unsigned int:t(0,4)=r(0,4);0;0177777;",128,0,1,0
+  18               		.stabs	"long unsigned int:t(0,5)=@s32;r(0,5);0;037777777777;",128,0,1,0
+  19               		.stabs	"long long int:t(0,6)=@s64;r(0,6);01000000000000000000000;0777777777777777777777;",128,0,1,
+  20               		.stabs	"long long unsigned int:t(0,7)=@s64;r(0,7);0;01777777777777777777777;",128,0,1,0
+  21               		.stabs	"short int:t(0,8)=r(0,8);-32768;32767;",128,0,1,0
+  22               		.stabs	"short unsigned int:t(0,9)=r(0,9);0;0177777;",128,0,1,0
+  23               		.stabs	"signed char:t(0,10)=@s8;r(0,10);-128;127;",128,0,1,0
+  24               		.stabs	"unsigned char:t(0,11)=@s8;r(0,11);0;255;",128,0,1,0
+  25               		.stabs	"float:t(0,12)=r(0,1);4;0;",128,0,1,0
+  26               		.stabs	"double:t(0,13)=r(0,1);4;0;",128,0,1,0
+  27               		.stabs	"long double:t(0,14)=r(0,1);4;0;",128,0,1,0
+  28               		.stabs	"void:t(0,15)=(0,15)",128,0,1,0
+  29               		.stabs	"/usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/io.h",130,0,0,0
+  30               		.stabs	"/usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/sfr_defs.h",130,0,0,0
+  31               		.stabs	"/usr/lib/gcc/avr/4.3.0/../../../../avr/include/inttypes.h",130,0,0,0
+  32               		.stabs	"/usr/lib/gcc/avr/4.3.0/../../../../avr/include/stdint.h",130,0,0,0
+  33               		.stabs	"int8_t:t(4,1)=(0,10)",128,0,121,0
+  34               		.stabs	"uint8_t:t(4,2)=(0,11)",128,0,122,0
+  35               		.stabs	"int16_t:t(4,3)=(0,1)",128,0,123,0
+  36               		.stabs	"uint16_t:t(4,4)=(0,4)",128,0,124,0
+  37               		.stabs	"int32_t:t(4,5)=(0,3)",128,0,125,0
+  38               		.stabs	"uint32_t:t(4,6)=(0,5)",128,0,126,0
+  39               		.stabs	"int64_t:t(4,7)=(0,6)",128,0,128,0
+  40               		.stabs	"uint64_t:t(4,8)=(0,7)",128,0,129,0
+  41               		.stabs	"intptr_t:t(4,9)=(4,3)",128,0,142,0
+  42               		.stabs	"uintptr_t:t(4,10)=(4,4)",128,0,147,0
+  43               		.stabs	"int_least8_t:t(4,11)=(4,1)",128,0,159,0
+  44               		.stabs	"uint_least8_t:t(4,12)=(4,2)",128,0,164,0
+  45               		.stabs	"int_least16_t:t(4,13)=(4,3)",128,0,169,0
+  46               		.stabs	"uint_least16_t:t(4,14)=(4,4)",128,0,174,0
+  47               		.stabs	"int_least32_t:t(4,15)=(4,5)",128,0,179,0
+  48               		.stabs	"uint_least32_t:t(4,16)=(4,6)",128,0,184,0
+  49               		.stabs	"int_least64_t:t(4,17)=(4,7)",128,0,192,0
+  50               		.stabs	"uint_least64_t:t(4,18)=(4,8)",128,0,199,0
+  51               		.stabs	"int_fast8_t:t(4,19)=(4,1)",128,0,213,0
+  52               		.stabs	"uint_fast8_t:t(4,20)=(4,2)",128,0,218,0
+  53               		.stabs	"int_fast16_t:t(4,21)=(4,3)",128,0,223,0
+  54               		.stabs	"uint_fast16_t:t(4,22)=(4,4)",128,0,228,0
+  55               		.stabs	"int_fast32_t:t(4,23)=(4,5)",128,0,233,0
+  56               		.stabs	"uint_fast32_t:t(4,24)=(4,6)",128,0,238,0
+  57               		.stabs	"int_fast64_t:t(4,25)=(4,7)",128,0,246,0
+GAS LISTING /tmp/ccn8ixWI.s 			page 2
+
+
+  58               		.stabs	"uint_fast64_t:t(4,26)=(4,8)",128,0,253,0
+  59               		.stabs	"intmax_t:t(4,27)=(4,7)",128,0,273,0
+  60               		.stabs	"uintmax_t:t(4,28)=(4,8)",128,0,278,0
+  61               		.stabn	162,0,0,0
+  62               		.stabs	"int_farptr_t:t(3,1)=(4,5)",128,0,77,0
+  63               		.stabs	"uint_farptr_t:t(3,2)=(4,6)",128,0,81,0
+  64               		.stabn	162,0,0,0
+  65               		.stabn	162,0,0,0
+  66               		.stabs	"/usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/fuse.h",130,0,0,0
+  67               		.stabs	"__fuse_t:t(5,1)=(5,2)=s2low:(0,11),0,8;high:(0,11),8,8;;",128,0,203,0
+  68               		.stabn	162,0,0,0
+  69               		.stabn	162,0,0,0
+  70               		.stabs	"main:F(0,1)",36,0,17,main
+  71               	.global	main
+  72               		.type	main, @function
+  73               	main:
+  74               		.stabd	46,0,0
+   1:serial2.c     **** #include <avr/io.h>
+   2:serial2.c     **** #include <avr/interrupt.h>
+   3:serial2.c     **** 
+   4:serial2.c     **** 
+   5:serial2.c     **** #define USART_BAUDRATE 1200
+   6:serial2.c     **** #define F_CPU 3686400
+   7:serial2.c     **** 
+   8:serial2.c     **** #define BAUD_PRESCALE (((F_CPU / (USART_BAUDRATE * 16UL))) - 1)
+   9:serial2.c     **** 
+  10:serial2.c     **** #define YELLOW 1
+  11:serial2.c     **** 
+  12:serial2.c     **** void delay_ms(unsigned long ms);
+  13:serial2.c     **** void blink(unsigned long ms, int led);
+  14:serial2.c     **** 
+  15:serial2.c     **** 
+  16:serial2.c     **** int main (void)
+  17:serial2.c     **** {
+  75               		.stabn	68,0,17,.LM0-.LFBB1
+  76               	.LM0:
+  77               	.LFBB1:
+  78               	/* prologue: function */
+  79               	/* frame size = 0 */
+  18:serial2.c     ****    
+  19:serial2.c     ****    UCSRB |= (1 << RXEN) | (1 << TXEN);   // Turn on the transmission and reception circuitry
+  80               		.stabn	68,0,19,.LM1-.LFBB1
+  81               	.LM1:
+  82 0000 8AB1      		in r24,42-0x20
+  83 0002 8861      		ori r24,lo8(24)
+  84 0004 8AB9      		out 42-0x20,r24
+  20:serial2.c     ****    UCSRC |= (1 << URSEL) | (1 << UCSZ0) | (1 << UCSZ1); // Use 8-bit character sizes
+  85               		.stabn	68,0,20,.LM2-.LFBB1
+  86               	.LM2:
+  87 0006 80B5      		in r24,64-0x20
+  88 0008 8668      		ori r24,lo8(-122)
+  89 000a 80BD      		out 64-0x20,r24
+  21:serial2.c     **** 
+  22:serial2.c     ****    UBRRL = BAUD_PRESCALE; // Load lower 8-bits of the baud rate value into the low byte of the UBRR
+  90               		.stabn	68,0,22,.LM3-.LFBB1
+  91               	.LM3:
+  92 000c 8FEB      		ldi r24,lo8(-65)
+GAS LISTING /tmp/ccn8ixWI.s 			page 3
+
+
+  93 000e 89B9      		out 41-0x20,r24
+  23:serial2.c     ****    UBRRH = (BAUD_PRESCALE >> 8); // Load upper 8-bits of the baud rate value into the high byte of 
+  94               		.stabn	68,0,23,.LM4-.LFBB1
+  95               	.LM4:
+  96 0010 10BC      		out 64-0x20,__zero_reg__
+  24:serial2.c     **** 
+  25:serial2.c     ****    DDRB = 0xFF;        // set port B for output. (leds)
+  97               		.stabn	68,0,25,.LM5-.LFBB1
+  98               	.LM5:
+  99 0012 8FEF      		ldi r24,lo8(-1)
+ 100 0014 87BB      		out 55-0x20,r24
+  26:serial2.c     **** 
+  27:serial2.c     ****    DDRC |=(1<<2)|(1<<3);        // set pin 2 & 3 of port  C for output, 0 and 1 for input.
+ 101               		.stabn	68,0,27,.LM6-.LFBB1
+ 102               	.LM6:
+ 103 0016 84B3      		in r24,52-0x20
+ 104 0018 8C60      		ori r24,lo8(12)
+ 105 001a 84BB      		out 52-0x20,r24
+  28:serial2.c     **** 
+  29:serial2.c     ****    UCSRB |= (1 << RXCIE); // Enable the USART Recieve Complete interrupt (USART_RXC)  (( RXCIE ? RC
+ 106               		.stabn	68,0,29,.LM7-.LFBB1
+ 107               	.LM7:
+ 108 001c 579A      		sbi 42-0x20,7
+  30:serial2.c     ****    sei(); //enable Global Interrupt Enable flag;
+ 109               		.stabn	68,0,30,.LM8-.LFBB1
+ 110               	.LM8:
+ 111               	/* #APP */
+ 112               	 ;  30 "serial2.c" 1
+ 113 001e 7894      		sei
+ 114               	 ;  0 "" 2
+  31:serial2.c     **** 
+  32:serial2.c     ****    for (;;) // Loop forever
+  33:serial2.c     ****    {
+  34:serial2.c     ****      PORTC=(PINC<<2)^0x0C; // shift 2 first bits and negate them.
+ 115               		.stabn	68,0,34,.LM9-.LFBB1
+ 116               	.LM9:
+ 117               	/* #NOAPP */
+ 118 0020 9CE0      		ldi r25,lo8(12)
+ 119               	.L2:
+ 120 0022 83B3      		in r24,51-0x20
+ 121 0024 880F      		lsl r24
+ 122 0026 880F      		lsl r24
+ 123 0028 8927      		eor r24,r25
+ 124 002a 85BB      		out 53-0x20,r24
+ 125 002c 00C0      		rjmp .L2
+ 126               		.size	main, .-main
+ 127               	.Lscope1:
+ 128               		.stabs	"",36,0,0,.Lscope1-.LFBB1
+ 129               		.stabd	78,0,0
+ 130               		.stabs	"delay_ms:F(0,15)",36,0,40,delay_ms
+ 131               		.stabs	"ms:P(0,5)",64,0,40,18
+ 132               	.global	delay_ms
+ 133               		.type	delay_ms, @function
+ 134               	delay_ms:
+ 135               		.stabd	46,0,0
+  35:serial2.c     ****    }   
+  36:serial2.c     **** }
+GAS LISTING /tmp/ccn8ixWI.s 			page 4
+
+
+  37:serial2.c     **** 
+  38:serial2.c     **** 
+  39:serial2.c     **** // this is just a program that 'kills time' in a calibrated method
+  40:serial2.c     **** void delay_ms(unsigned long ms) {
+ 136               		.stabn	68,0,40,.LM10-.LFBB2
+ 137               	.LM10:
+ 138               	.LFBB2:
+ 139 002e DF93      		push r29
+ 140 0030 CF93      		push r28
+ 141 0032 00D0      		rcall .
+ 142 0034 00D0      		rcall .
+ 143 0036 CDB7      		in r28,__SP_L__
+ 144 0038 DEB7      		in r29,__SP_H__
+ 145               	/* prologue: function */
+ 146               	/* frame size = 4 */
+ 147 003a 9B01      		movw r18,r22
+ 148 003c AC01      		movw r20,r24
+ 149 003e 00C0      		rjmp .L5
+ 150               	.L8:
+  41:serial2.c     ****   unsigned long delay_count = 211; // F_CPU/17500
+  42:serial2.c     ****   volatile unsigned long i;
+  43:serial2.c     ****   
+  44:serial2.c     ****   while (ms != 0) {
+  45:serial2.c     ****     for (i=0; i != delay_count; i++);
+ 151               		.stabn	68,0,45,.LM11-.LFBB2
+ 152               	.LM11:
+ 153 0040 1982      		std Y+1,__zero_reg__
+ 154 0042 1A82      		std Y+2,__zero_reg__
+ 155 0044 1B82      		std Y+3,__zero_reg__
+ 156 0046 1C82      		std Y+4,__zero_reg__
+ 157 0048 00C0      		rjmp .L6
+ 158               	.L7:
+ 159 004a 8981      		ldd r24,Y+1
+ 160 004c 9A81      		ldd r25,Y+2
+ 161 004e AB81      		ldd r26,Y+3
+ 162 0050 BC81      		ldd r27,Y+4
+ 163 0052 0196      		adiw r24,1
+ 164 0054 A11D      		adc r26,__zero_reg__
+ 165 0056 B11D      		adc r27,__zero_reg__
+ 166 0058 8983      		std Y+1,r24
+ 167 005a 9A83      		std Y+2,r25
+ 168 005c AB83      		std Y+3,r26
+ 169 005e BC83      		std Y+4,r27
+ 170               	.L6:
+ 171 0060 8981      		ldd r24,Y+1
+ 172 0062 9A81      		ldd r25,Y+2
+ 173 0064 AB81      		ldd r26,Y+3
+ 174 0066 BC81      		ldd r27,Y+4
+ 175 0068 833D      		cpi r24,lo8(211)
+ 176 006a 9105      		cpc r25,__zero_reg__
+ 177 006c A105      		cpc r26,__zero_reg__
+ 178 006e B105      		cpc r27,__zero_reg__
+ 179 0070 01F4      		brne .L7
+  46:serial2.c     ****     ms--;
+ 180               		.stabn	68,0,46,.LM12-.LFBB2
+ 181               	.LM12:
+ 182 0072 2150      		subi r18,lo8(-(-1))
+GAS LISTING /tmp/ccn8ixWI.s 			page 5
+
+
+ 183 0074 3040      		sbci r19,hi8(-(-1))
+ 184 0076 4040      		sbci r20,hlo8(-(-1))
+ 185 0078 5040      		sbci r21,hhi8(-(-1))
+ 186               	.L5:
+ 187               		.stabn	68,0,44,.LM13-.LFBB2
+ 188               	.LM13:
+ 189 007a 2115      		cp r18,__zero_reg__
+ 190 007c 3105      		cpc r19,__zero_reg__
+ 191 007e 4105      		cpc r20,__zero_reg__
+ 192 0080 5105      		cpc r21,__zero_reg__
+ 193 0082 01F4      		brne .L8
+ 194               	/* epilogue start */
+  47:serial2.c     ****   }
+  48:serial2.c     ****    
+  49:serial2.c     **** }
+ 195               		.stabn	68,0,49,.LM14-.LFBB2
+ 196               	.LM14:
+ 197 0084 0F90      		pop __tmp_reg__
+ 198 0086 0F90      		pop __tmp_reg__
+ 199 0088 0F90      		pop __tmp_reg__
+ 200 008a 0F90      		pop __tmp_reg__
+ 201 008c CF91      		pop r28
+ 202 008e DF91      		pop r29
+ 203 0090 0895      		ret
+ 204               		.size	delay_ms, .-delay_ms
+ 205               		.stabs	"i:(0,16)=B(0,5)",128,0,42,1
+ 206               		.stabn	192,0,0,.LFBB2-.LFBB2
+ 207               		.stabn	224,0,0,.Lscope2-.LFBB2
+ 208               	.Lscope2:
+ 209               		.stabs	"",36,0,0,.Lscope2-.LFBB2
+ 210               		.stabd	78,0,0
+ 211               		.stabs	"blink:F(0,15)",36,0,51,blink
+ 212               		.stabs	"ms:P(0,5)",64,0,51,14
+ 213               	.global	blink
+ 214               		.type	blink, @function
+ 215               	blink:
+ 216               		.stabd	46,0,0
+  50:serial2.c     ****  
+  51:serial2.c     **** void blink(unsigned long ms, int led) {
+ 217               		.stabn	68,0,51,.LM15-.LFBB3
+ 218               	.LM15:
+ 219               	.LFBB3:
+ 220 0092 EF92      		push r14
+ 221 0094 FF92      		push r15
+ 222 0096 0F93      		push r16
+ 223 0098 1F93      		push r17
+ 224 009a DF93      		push r29
+ 225 009c CF93      		push r28
+ 226 009e 00D0      		rcall .
+ 227 00a0 00D0      		rcall .
+ 228 00a2 CDB7      		in r28,__SP_L__
+ 229 00a4 DEB7      		in r29,__SP_H__
+ 230               	/* prologue: function */
+ 231               	/* frame size = 4 */
+ 232 00a6 7B01      		movw r14,r22
+ 233 00a8 8C01      		movw r16,r24
+  52:serial2.c     ****   PORTB |= (1<<led);
+GAS LISTING /tmp/ccn8ixWI.s 			page 6
+
+
+ 234               		.stabn	68,0,52,.LM16-.LFBB3
+ 235               	.LM16:
+ 236 00aa 28B3      		in r18,56-0x20
+ 237 00ac 81E0      		ldi r24,lo8(1)
+ 238 00ae 90E0      		ldi r25,hi8(1)
+ 239 00b0 00C0      		rjmp 2f
+ 240 00b2 880F      	1:	lsl r24
+ 241 00b4 991F      		rol r25
+ 242 00b6 4A95      	2:	dec r20
+ 243 00b8 02F4      		brpl 1b
+ 244 00ba 382F      		mov r19,r24
+ 245 00bc 282B      		or r18,r24
+ 246 00be 28BB      		out 56-0x20,r18
+ 247 00c0 00C0      		rjmp .L11
+ 248               	.L14:
+ 249               	.LBB4:
+ 250               	.LBB5:
+ 251               		.stabn	68,0,45,.LM17-.LFBB3
+ 252               	.LM17:
+ 253 00c2 1982      		std Y+1,__zero_reg__
+ 254 00c4 1A82      		std Y+2,__zero_reg__
+ 255 00c6 1B82      		std Y+3,__zero_reg__
+ 256 00c8 1C82      		std Y+4,__zero_reg__
+ 257 00ca 00C0      		rjmp .L12
+ 258               	.L13:
+ 259 00cc 8981      		ldd r24,Y+1
+ 260 00ce 9A81      		ldd r25,Y+2
+ 261 00d0 AB81      		ldd r26,Y+3
+ 262 00d2 BC81      		ldd r27,Y+4
+ 263 00d4 0196      		adiw r24,1
+ 264 00d6 A11D      		adc r26,__zero_reg__
+ 265 00d8 B11D      		adc r27,__zero_reg__
+ 266 00da 8983      		std Y+1,r24
+ 267 00dc 9A83      		std Y+2,r25
+ 268 00de AB83      		std Y+3,r26
+ 269 00e0 BC83      		std Y+4,r27
+ 270               	.L12:
+ 271 00e2 8981      		ldd r24,Y+1
+ 272 00e4 9A81      		ldd r25,Y+2
+ 273 00e6 AB81      		ldd r26,Y+3
+ 274 00e8 BC81      		ldd r27,Y+4
+ 275 00ea 833D      		cpi r24,lo8(211)
+ 276 00ec 9105      		cpc r25,__zero_reg__
+ 277 00ee A105      		cpc r26,__zero_reg__
+ 278 00f0 B105      		cpc r27,__zero_reg__
+ 279 00f2 01F4      		brne .L13
+ 280               		.stabn	68,0,46,.LM18-.LFBB3
+ 281               	.LM18:
+ 282 00f4 0894      		sec
+ 283 00f6 E108      		sbc r14,__zero_reg__
+ 284 00f8 F108      		sbc r15,__zero_reg__
+ 285 00fa 0109      		sbc r16,__zero_reg__
+ 286 00fc 1109      		sbc r17,__zero_reg__
+ 287               	.L11:
+ 288               		.stabn	68,0,44,.LM19-.LFBB3
+ 289               	.LM19:
+ 290 00fe E114      		cp r14,__zero_reg__
+GAS LISTING /tmp/ccn8ixWI.s 			page 7
+
+
+ 291 0100 F104      		cpc r15,__zero_reg__
+ 292 0102 0105      		cpc r16,__zero_reg__
+ 293 0104 1105      		cpc r17,__zero_reg__
+ 294 0106 01F4      		brne .L14
+ 295               	.LBE5:
+ 296               	.LBE4:
+  53:serial2.c     ****   delay_ms(ms);
+  54:serial2.c     ****   PORTB &= ~(1<<led);
+ 297               		.stabn	68,0,54,.LM20-.LFBB3
+ 298               	.LM20:
+ 299 0108 88B3      		in r24,56-0x20
+ 300 010a 3095      		com r19
+ 301 010c 3823      		and r19,r24
+ 302 010e 38BB      		out 56-0x20,r19
+ 303               	/* epilogue start */
+  55:serial2.c     **** }
+ 304               		.stabn	68,0,55,.LM21-.LFBB3
+ 305               	.LM21:
+ 306 0110 0F90      		pop __tmp_reg__
+ 307 0112 0F90      		pop __tmp_reg__
+ 308 0114 0F90      		pop __tmp_reg__
+ 309 0116 0F90      		pop __tmp_reg__
+ 310 0118 CF91      		pop r28
+ 311 011a DF91      		pop r29
+ 312 011c 1F91      		pop r17
+ 313 011e 0F91      		pop r16
+ 314 0120 FF90      		pop r15
+ 315 0122 EF90      		pop r14
+ 316 0124 0895      		ret
+ 317               		.size	blink, .-blink
+ 318               		.stabs	"i:(0,16)",128,0,42,1
+ 319               		.stabn	192,0,0,.LBB5-.LFBB3
+ 320               		.stabn	224,0,0,.LBE5-.LFBB3
+ 321               	.Lscope3:
+ 322               		.stabs	"",36,0,0,.Lscope3-.LFBB3
+ 323               		.stabd	78,0,0
+ 324               		.stabs	"__vector_11:F(0,15)",36,0,59,__vector_11
+ 325               	.global	__vector_11
+ 326               		.type	__vector_11, @function
+ 327               	__vector_11:
+ 328               		.stabd	46,0,0
+  56:serial2.c     **** 
+  57:serial2.c     **** 
+  58:serial2.c     **** ISR(USART_RXC_vect)
+  59:serial2.c     **** {
+ 329               		.stabn	68,0,59,.LM22-.LFBB4
+ 330               	.LM22:
+ 331               	.LFBB4:
+ 332 0126 1F92      		push __zero_reg__
+ 333 0128 0F92      		push r0
+ 334 012a 0FB6      		in r0,__SREG__
+ 335 012c 0F92      		push r0
+ 336 012e 1124      		clr __zero_reg__
+ 337 0130 4F93      		push r20
+ 338 0132 5F93      		push r21
+ 339 0134 6F93      		push r22
+ 340 0136 7F93      		push r23
+GAS LISTING /tmp/ccn8ixWI.s 			page 8
+
+
+ 341 0138 8F93      		push r24
+ 342 013a 9F93      		push r25
+ 343               	/* prologue: Signal */
+ 344               	/* frame size = 0 */
+  60:serial2.c     **** 
+  61:serial2.c     ****    char ReceivedByte;
+  62:serial2.c     **** 
+  63:serial2.c     ****    ReceivedByte = UDR; // Fetch the recieved byte value into the variable "ByteReceived"
+ 345               		.stabn	68,0,63,.LM23-.LFBB4
+ 346               	.LM23:
+ 347 013c 8CB1      		in r24,44-0x20
+  64:serial2.c     ****    UDR = ReceivedByte; // Echo back the received byte back to the computer 
+ 348               		.stabn	68,0,64,.LM24-.LFBB4
+ 349               	.LM24:
+ 350 013e 8CB9      		out 44-0x20,r24
+  65:serial2.c     ****    blink(50,YELLOW);
+ 351               		.stabn	68,0,65,.LM25-.LFBB4
+ 352               	.LM25:
+ 353 0140 41E0      		ldi r20,lo8(1)
+ 354 0142 50E0      		ldi r21,hi8(1)
+ 355 0144 62E3      		ldi r22,lo8(50)
+ 356 0146 70E0      		ldi r23,hi8(50)
+ 357 0148 80E0      		ldi r24,hlo8(50)
+ 358 014a 90E0      		ldi r25,hhi8(50)
+ 359 014c 00D0      		rcall blink
+ 360               	/* epilogue start */
+  66:serial2.c     **** } 
+ 361               		.stabn	68,0,66,.LM26-.LFBB4
+ 362               	.LM26:
+ 363 014e 9F91      		pop r25
+ 364 0150 8F91      		pop r24
+ 365 0152 7F91      		pop r23
+ 366 0154 6F91      		pop r22
+ 367 0156 5F91      		pop r21
+ 368 0158 4F91      		pop r20
+ 369 015a 0F90      		pop r0
+ 370 015c 0FBE      		out __SREG__,r0
+ 371 015e 0F90      		pop r0
+ 372 0160 1F90      		pop __zero_reg__
+ 373 0162 1895      		reti
+ 374               		.size	__vector_11, .-__vector_11
+ 375               		.stabs	"ReceivedByte:r(0,2)",64,0,61,24
+ 376               		.stabn	192,0,0,.LFBB4-.LFBB4
+ 377               		.stabn	224,0,0,.Lscope4-.LFBB4
+ 378               	.Lscope4:
+ 379               		.stabs	"",36,0,0,.Lscope4-.LFBB4
+ 380               		.stabd	78,0,0
+ 381               		.stabs	"",100,0,0,.Letext0
+ 382               	.Letext0:
+GAS LISTING /tmp/ccn8ixWI.s 			page 9
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 serial2.c
+     /tmp/ccn8ixWI.s:2      *ABS*:0000003f __SREG__
+     /tmp/ccn8ixWI.s:3      *ABS*:0000003e __SP_H__
+     /tmp/ccn8ixWI.s:4      *ABS*:0000003d __SP_L__
+     /tmp/ccn8ixWI.s:5      *ABS*:00000000 __tmp_reg__
+     /tmp/ccn8ixWI.s:6      *ABS*:00000001 __zero_reg__
+     /tmp/ccn8ixWI.s:73     .text:00000000 main
+     /tmp/ccn8ixWI.s:134    .text:0000002e delay_ms
+     /tmp/ccn8ixWI.s:215    .text:00000092 blink
+     /tmp/ccn8ixWI.s:327    .text:00000126 __vector_11
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
